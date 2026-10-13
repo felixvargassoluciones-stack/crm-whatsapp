@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp CRM - Motor IA</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Encabezado Principal -->
+    <header class="app-header">
+        <h1>🚀 WhatsApp CRM <span class="badge">IA Visión</span></h1>
+        <p>Registra tus clientes y haz seguimiento usando capturas de pantalla de forma segura.</p>
+    </header>
+
+    <div class="app-container">
+        <!-- PANEL IZQUIERDO: Zona de carga y extracción -->
+        <main class="panel-upload">
+            <div class="card">
+                <h2>1. Captura de Información</h2>
+                <p class="instruction">Toma una captura de la info del contacto en WhatsApp, regresa aquí y presiona <strong>Ctrl + V</strong> (o comando + V) para pegarla.</p>
+                
+                <!-- Zona interactiva para pegar la imagen -->
+                                <!-- Zona interactiva para pegar o seleccionar la imagen -->
+                <div id="drop-zone" class="drop-zone">
+                    <div class="drop-zone-content">
+                        <span class="icon">📸</span>
+                        <p>Haz clic aquí para seleccionar o pegar la captura</p>
+                    </div>
+                    <img id="preview-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Vista previa de la captura" class="hidden">
+                    <!-- Selector de archivos oculto para móviles -->
+                    <input type="file" id="file-input" accept="image/*" class="hidden">
+                </div>
+
+
+                <!-- Campos que rellenará la IA -->
+                <div class="extracted-fields">
+                    <div class="field-group">
+                        <label for="client-name">Nombre Detectado:</label>
+                        <input type="text" id="client-name" placeholder="Esperando análisis de IA..." disabled>
+                    </div>
+                    <div class="field-group">
+                        <label for="client-phone">Teléfono Detectado:</label>
+                        <input type="text" id="client-phone" placeholder="Esperando análisis de IA..." disabled>
+                    </div>
+                </div>
+
+                <button id="btn-save" class="btn-primary" disabled>🔄 Procesando Imagen...</button>
+            </div>
+        </main>
+
+        <!-- PANEL DERECHO: Tu Base de Datos de Clientes -->
+        <aside class="panel-list">
+            <div class="card">
+                <h2>2. Mis Contactos Registrados</h2>
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Buscar cliente por nombre...">
+                </div>
+                
+                <!-- Lista dinámica de clientes -->
+                <div class="table-container">
+                    <table id="contacts-table">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Teléfono</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody id="contacts-body">
+                            <!-- Los clientes guardados en tu Google Sheets aparecerán aquí dinámicamente -->
+                            <tr class="empty-row">
+                                <td colspan="3">No hay contactos cargados.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Enlace al archivo lógico de Javascript -->
+    <script src="app.js"></script>
+</body>
+</html>

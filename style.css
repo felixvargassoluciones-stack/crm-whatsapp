@@ -1,0 +1,293 @@
+/* ==========================================================================
+   CONFIGURACIÓN GENERAL Y VARIABLES
+   ========================================================================== */
+:root {
+    --bg-main: #f4f6f9;
+    --bg-card: #ffffff;
+    --primary: #25d366; /* Verde WhatsApp */
+    --primary-dark: #128c7e;
+    --text-main: #2c3e50;
+    --text-muted: #7f8c8d;
+    --border-color: #e2e8f0;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.03);
+    --radius: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    padding: 20px;
+    min-height: 100vh;
+}
+
+/* ==========================================================================
+   ENCABEZADO
+   ========================================================================== */
+.app-header {
+    max-width: 1400px;
+    margin: 0 auto 24px auto;
+    padding: 10px;
+}
+
+.app-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.badge {
+    background-color: #3498db;
+    color: white;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.app-header p {
+    color: var(--text-muted);
+    margin-top: 4px;
+    font-size: 15px;
+}
+
+/* ==========================================================================
+   CONTENEDOR PRINCIPAL (DOS COLUMNAS)
+   ========================================================================== */
+.app-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: start;
+}
+
+@media (max-width: 900px) {
+    .app-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card {
+    background-color: var(--bg-card);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+
+.card h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+    border-bottom: 2px solid var(--bg-main);
+    padding-bottom: 8px;
+}
+
+.instruction {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    line-height: 1.4;
+}
+
+/* ==========================================================================
+   ZONA DE CAPTURA (DROP ZONE)
+   ========================================================================== */
+.drop-zone {
+    border: 2px dashed #cbd5e1;
+    border-radius: var(--radius);
+    padding: 40px 20px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #f8fafc;
+    transition: all 0.3s ease;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.drop-zone:hover, .drop-zone.dragover {
+    border-color: var(--primary);
+    background-color: #f0fdf4;
+}
+
+.drop-zone-content .icon {
+    font-size: 40px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.drop-zone-content p {
+    font-size: 14px;
+    color: #64748b;
+    font-weight: 500;
+}
+
+#preview-img {
+    max-width: 100%;
+    max-height: 250px;
+    object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ==========================================================================
+   FORMULARIOS Y CAMPOS
+   ========================================================================== */
+.extracted-fields {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.field-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #475569;
+}
+
+.field-group input {
+    padding: 10px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #f8fafc;
+    color: var(--text-main);
+    width: 100%;
+}
+
+.field-group input:disabled {
+    background-color: #f1f5f9;
+    color: #94a3b8;
+    cursor: not-allowed;
+}
+
+/* ==========================================================================
+   BOTONES
+   ========================================================================== */
+.btn-primary {
+    display: block;
+    width: 100%;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+}
+
+.btn-primary:disabled {
+    background-color: #cbd5e1;
+    color: #94a3b8;
+    cursor: not-allowed;
+}
+
+/* ==========================================================================
+   PANEL DERECHO: BUSCADOR Y TABLA DE CLIENTES
+   ========================================================================== */
+.search-bar {
+    margin-bottom: 16px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.table-container {
+    overflow-x: auto;
+    max-height: 500px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 14px;
+}
+
+th {
+    background-color: #f8fafc;
+    color: #475569;
+    font-weight: 600;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+}
+
+td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover {
+    background-color: #f8fafc;
+}
+
+.empty-row {
+    text-align: center;
+    color: var(--text-muted);
+}
+
+/* Botón de acción directo para abrir WhatsApp */
+.whatsapp-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #e8fbf0;
+    color: var(--primary-dark);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 13px;
+    transition: all 0.2s ease;
+}
+
+.whatsapp-link:hover {
+    background-color: var(--primary);
+    color: white;
+}
